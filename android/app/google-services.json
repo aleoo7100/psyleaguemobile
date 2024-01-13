@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "4105809869",
+    "project_id": "psysicleague",
+    "storage_bucket": "psysicleague.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:4105809869:android:ceed215750e47042139e84",
+        "android_client_info": {
+          "package_name": "gg.psyleague"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMxBqydzouweC_vRDFmSa3IxJSQ3c5OmM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
