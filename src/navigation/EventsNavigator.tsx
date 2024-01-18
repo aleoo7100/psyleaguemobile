@@ -1,16 +1,20 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import EventsS from '../features/events/EventsS';
+import EventDetailS from '../features/events/eventDetail/EventDetailS';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<EventsStackParamList>();
 
 export default function EventsNavigator() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Eventos" component={EventsS} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Events" component={EventsS} />
+      <Stack.Screen name="EventDetail" component={EventDetailS} />
+    </Stack.Navigator>
   );
 }
+
+export type EventsStackParamList = {
+  Events: undefined;
+  EventDetail: undefined; //TODO: add input data to screen
+};

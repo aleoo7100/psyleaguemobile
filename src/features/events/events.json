@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "Fortnite: Batalla por la Victoria",
+    "eventDate": "2024-02-15T20:00:00.000Z",
+    "img": "https://firebasestorage.googleapis.com/v0/b/psysicleague.appspot.com/o/Mesa%20de%20trabajo%2019.png?alt=media&token=df09dac1-2943-4ed5-82c6-99d23d9067fe"
+  },
+  {
+    "id": "2",
+    "name": "Desafío Supremo de Fortnite",
+    "eventDate": "2024-01-02T08:00:00.000Z",
+    "img": "https://firebasestorage.googleapis.com/v0/b/psysicleague.appspot.com/o/Mesa%20de%20trabajo%2016.png?alt=media&token=3ef572e7-2a9a-473e-a3d6-9ef2d7a3b725"
+  },
+  {
+    "id": "3",
+    "name": "Fortnite: Conquista del Campeón",
+    "eventDate": "2024-01-02T08:00:00.000Z",
+    "img": "https://firebasestorage.googleapis.com/v0/b/psysicleague.appspot.com/o/Mesa%20de%20trabajo%2017.png?alt=media&token=957f1a33-6729-4921-9ee5-0f286c4a82ce"
+  },
+  {
+    "id": "4",
+    "name": "Epic Royale: El Torneo de Fortnite",
+    "eventDate": "2024-02-15T08:00:00.000Z",
+    "img": "https://firebasestorage.googleapis.com/v0/b/psysicleague.appspot.com/o/Mesa%20de%20trabajo%2015.png?alt=media&token=2318bc4b-3f11-4c1d-85d3-2c6e63d1a0de"
+  }
+]

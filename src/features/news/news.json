@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "title": "Nueva era de los eSports: Cómo los torneos virtuales están transformando el deporte",
+    "shortDescription": "Los eSports están ganando terreno rápidamente en el mundo del deporte, con torneos que atraen a millones de espectadores alrededor del mundo. Profundizamos en cómo esta forma de competencia virtual está redefiniendo lo que significa ser un atleta.",
+    "date": "2023-01-10",
+    "img": "https://firebasestorage.googleapis.com/v0/b/psysicleague.appspot.com/o/Mesa%20de%20trabajo%201.png?alt=media&token=2268dce8-4364-4fdc-b153-62df1f67bf0a"
+  },
+  {
+    "id": "2",
+    "title": "Avance en Realidad Virtual: Los juegos más esperados del 2023",
+    "shortDescription": "La Realidad Virtual está llevando el gaming a un nivel completamente nuevo. Exploramos los títulos más anticipados de 2023 que prometen una inmersión sin precedentes y una experiencia de juego revolucionaria.",
+    "date": "2023-02-15",
+    "img": "https://firebasestorage.googleapis.com/v0/b/psysicleague.appspot.com/o/Mesa%20de%20trabajo%2014.png?alt=media&token=3b51b4e8-994e-4ac0-a488-f124516e196e"
+  },
+  {
+    "id": "3",
+    "title": "Impacto de la Inteligencia Artificial en los Videojuegos",
+    "shortDescription": "La Inteligencia Artificial no es solo una herramienta para desarrolladores; está cambiando la forma en que jugamos. Desde NPCs más inteligentes hasta mundos de juego que evolucionan dinámicamente, la IA está estableciendo un nuevo estándar en el diseño de videojuegos.",
+    "date": "2023-03-05",
+    "img": "https://firebasestorage.googleapis.com/v0/b/psysicleague.appspot.com/o/Mesa%20de%20trabajo%2021.png?alt=media&token=207d9093-1764-45d3-8f09-26da60ed0882"
+  },
+  {
+    "id": "4",
+    "title": "Trucos para mejorar el gameplay de una vez por todas",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis ultricies ultricies, nunc nisl ultricies nisl",
+    "date": "2017-01-01",
+    "img": "https://firebasestorage.googleapis.com/v0/b/psysicleague.appspot.com/o/Mesa%20de%20trabajo%201.png?alt=media&token=2268dce8-4364-4fdc-b153-62df1f67bf0a"
+  },
+  {
+    "id": "5",
+    "title": "Trucos para mejorar el gameplay de una vez por todas",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis ultricies ultricies, nunc nisl ultricies nisl",
+    "date": "2017-01-01",
+    "img": "https://firebasestorage.googleapis.com/v0/b/psysicleague.appspot.com/o/Mesa%20de%20trabajo%2021.png?alt=media&token=207d9093-1764-45d3-8f09-26da60ed0882"
+  }
+]
