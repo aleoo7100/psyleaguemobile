@@ -6,7 +6,7 @@ import styleEffects from '../../../common/helpers/styleEffects';
 import { calculateTimeLeft } from '../../../common/helpers/calculateTimeLeft';
 
 interface RegresiveTimerProps {
-  date: string;
+  date?: string;
   style?: StyleProp<ViewStyle>;
 }
 export default function RegresiveTimer(props: RegresiveTimerProps) {
@@ -26,7 +26,7 @@ export default function RegresiveTimer(props: RegresiveTimerProps) {
     return () => {
       clearInterval(timer.current);
     };
-  }, []);
+  }, [props.date]);
 
   if (!ispositiveTime) {
     return null;

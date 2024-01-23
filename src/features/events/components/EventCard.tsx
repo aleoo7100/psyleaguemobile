@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { StyleSheet } from 'react-native';
+import React from 'react';
 import styled from 'styled-components/native';
 import RightArrowIcon from '../../../assets/icons/rightArrow.svg';
 import LinearGradient from 'react-native-linear-gradient';
@@ -9,7 +8,6 @@ import moment from 'moment';
 import CustomButton from '../../../common/components/CustomButton';
 import styleEffects from '../../../common/helpers/styleEffects';
 import RegresiveTimer from './RegresiveTimer';
-import { calculateTimeLeft } from '../../../common/helpers/calculateTimeLeft';
 
 interface EventCardProps {
   name: string;

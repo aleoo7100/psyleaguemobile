@@ -13,13 +13,19 @@ import TwitchIcon from '../../../assets/icons/twitch.svg';
 import YoutubeIcon from '../../../assets/icons/youtube.svg';
 import TiktokIcon from '../../../assets/icons/tiktok.svg';
 import FacebookIcon from '../../../assets/icons/facebook.svg';
+import useEventDetailS from './useEventDetailS';
+import { Linking } from 'react-native';
 
 type EventDetailSProps = NativeStackScreenProps<
   EventsStackParamList,
-  'EventDetail'
+  'eventDetail'
 >;
 
 export default function EventDetailS(props: EventDetailSProps) {
+  const { data } = useEventDetailS({ events_id: props.route.params.events_id });
+
+  const streamer = data?.events_streamers?.[0]?.streamer;
+
   return (
     <Container>
       <Background />
@@ -28,11 +34,11 @@ export default function EventDetailS(props: EventDetailSProps) {
         contentContainerStyle={{ alignItems: 'center', paddingBottom: 60 }}>
         <ImageContainer>
           <Image
-            source={{ uri: eventobject.img }}
+            source={{ uri: data?.thumbnail_url || undefined }}
             defaultSource={require('../../../assets/images/defaultBackground.png')}
           />
           <BlackGradient colors={['#2220', '#0009', '#000e']} />
-          <RegresiveTimerContainer date={eventobject.eventDate} />
+          <RegresiveTimerContainer date={data?.start_date} />
         </ImageContainer>
         <BodyContainer>
           <TextT1
@@ -40,47 +46,78 @@ export default function EventDetailS(props: EventDetailSProps) {
             TextSize="XXLarge"
             textColor="Main"
             align="center">
-            {eventobject.name?.toUpperCase()}
+            {data?.title?.toUpperCase()}
           </TextT1>
           <BlankSpace height={12} />
-          <TextT2>{moment(eventobject.eventDate).format('DD/MM/YYYY')}</TextT2>
+          <TextT2>{moment(data?.start_date).format('DD/MM/YYYY')}</TextT2>
           <BlankSpace height={12} />
           <TextT2 align="center" TextSize="Large">
-            {eventobject.description}
+            {data?.description}
           </TextT2>
         </BodyContainer>
         <BlankSpace height={24} />
-        <StreamerContainer>
-          <StreamerImage source={{ uri: eventobject.streamer[0]?.photo }} />
-          <TextT2
-            fontWeigth="Bold"
-            TextSize="Medium"
-            textColor="Main"
-            align="center">
-            {eventobject.streamer[0]?.name}
-          </TextT2>
-          <TextT2 align="center" TextSize="XSmall">
-            Streamer oficial
-          </TextT2>
-          <BlankSpace height={12} />
-          <SocialMediaContainer>
-            <IconContainer>
-              <InstagramIcon width={26} height={26} />
-            </IconContainer>
-            <IconContainer>
-              <TwitchIcon width={26} height={26} />
-            </IconContainer>
-            <IconContainer>
-              <YoutubeIcon width={26} height={26} />
-            </IconContainer>
-            <IconContainer>
-              <TiktokIcon width={26} height={26} />
-            </IconContainer>
-            <IconContainer>
-              <FacebookIcon width={26} height={26} />
-            </IconContainer>
-          </SocialMediaContainer>
-        </StreamerContainer>
+        {streamer && (
+          <StreamerContainer>
+            <StreamerImage
+              source={{
+                uri: streamer?.photo_url || '',
+              }}
+            />
+            <TextT2
+              fontWeigth="Bold"
+              TextSize="Medium"
+              textColor="Main"
+              align="center">
+              {streamer?.nick_name}
+            </TextT2>
+            <TextT2 align="center" TextSize="XSmall">
+              Streamer oficial
+            </TextT2>
+            <BlankSpace height={12} />
+            <SocialMediaContainer>
+              {streamer?.instagram_url && (
+                <IconContainer
+                  onPress={() => {
+                    Linking.openURL(streamer?.instagram_url!);
+                  }}>
+                  <InstagramIcon width={26} height={26} />
+                </IconContainer>
+              )}
+              {streamer?.twitch_url && (
+                <IconContainer
+                  onPress={() => {
+                    Linking.openURL(streamer?.twitch_url!);
+                  }}>
+                  <TwitchIcon width={26} height={26} />
+                </IconContainer>
+              )}
+              {streamer?.youtube_url && (
+                <IconContainer
+                  onPress={() => {
+                    Linking.openURL(streamer?.youtube_url!);
+                  }}>
+                  <YoutubeIcon width={26} height={26} />
+                </IconContainer>
+              )}
+              {streamer?.tiktok_url && (
+                <IconContainer
+                  onPress={() => {
+                    Linking.openURL(streamer?.tiktok_url!);
+                  }}>
+                  <TiktokIcon width={26} height={26} />
+                </IconContainer>
+              )}
+              {streamer?.facebook_url && (
+                <IconContainer
+                  onPress={() => {
+                    Linking.openURL(streamer?.facebook_url!);
+                  }}>
+                  <FacebookIcon width={26} height={26} />
+                </IconContainer>
+              )}
+            </SocialMediaContainer>
+          </StreamerContainer>
+        )}
       </ScrollContainer>
     </Container>
   );
@@ -148,24 +185,3 @@ const IconContainer = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
 `;
-
-const eventobject = {
-  id: '1',
-  name: 'Fortnite: Batalla por la Victoria',
-  description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nisl nunc ultricies nunc, vitae aliquam nisl nunc eu nunc. Donec auctor, nisl eget ultricies aliquam, nisl nunc ultricies nunc.',
-  eventDate: '2024-02-15T20:00:00.000Z',
-  img: 'https://firebasestorage.googleapis.com/v0/b/psysicleague.appspot.com/o/Mesa%20de%20trabajo%2019.png?alt=media&token=df09dac1-2943-4ed5-82c6-99d23d9067fe',
-  streamer: [
-    {
-      name: 'Lian Occoner',
-      photo:
-        'https://firebasestorage.googleapis.com/v0/b/psysicleague.appspot.com/o/Mesa%20de%20trabajo%2012.png?alt=media&token=4ac6785f-a09a-4381-90b4-ad7aa3576e35',
-      instagramUrl: 'https://www.instagram.com/lianocconer/',
-      twitchUrl: 'https://www.twitch.tv/lianocconer',
-      youtubeUrl: 'https://www.youtube.com/channel/UC0Yf4y1zX4A5l2Zv0q2jK6A',
-      tiktokUrl: 'https://www.tiktok.com/@lianocconer?lang=es',
-      facebookUrl: 'https://www.facebook.com/lianocconer',
-    },
-  ],
-};

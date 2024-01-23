@@ -7,6 +7,7 @@ import RightArrowIcon from '../../../assets/icons/rightArrow.svg';
 import { StyleSheet } from 'react-native';
 import CustomButton from '../../../common/components/CustomButton';
 import styleEffects from '../../../common/helpers/styleEffects';
+import moment from 'moment';
 
 interface NewCardProps {
   title: string;
@@ -29,7 +30,7 @@ export default function NewCard(props: NewCardProps) {
         </ImageGradient>
       </BackgroundContainer>
       <TextContainer>
-        <DateText>{props.date}</DateText>
+        <DateText>{moment(props.date).format('DD/MM/YYYY')}</DateText>
         <DescriptionText numberOfLines={3}>
           {props.shortDescription}
         </DescriptionText>

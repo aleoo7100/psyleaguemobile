@@ -8,13 +8,13 @@ const Stack = createNativeStackNavigator<EventsStackParamList>();
 export default function EventsNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Events" component={EventsS} />
-      <Stack.Screen name="EventDetail" component={EventDetailS} />
+      <Stack.Screen name="events" component={EventsS} />
+      <Stack.Screen name="eventDetail" component={EventDetailS} />
     </Stack.Navigator>
   );
 }
 
 export type EventsStackParamList = {
-  Events: undefined;
-  EventDetail: undefined; //TODO: add input data to screen
+  events: undefined;
+  eventDetail: { events_id: string };
 };

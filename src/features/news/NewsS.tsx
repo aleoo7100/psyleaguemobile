@@ -3,34 +3,40 @@ import styled from 'styled-components/native';
 import Header1 from '../../common/components/headers/Header1';
 import { Background } from '../../common/components/Layout';
 import { FlatList } from 'react-native';
-import newJson from './news.json';
 import NewCard from './components/NewCard';
 import { NewsStackParamList } from '../../navigation/NewsNavigator';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import Loading from '../../common/components/Loading';
+import useNewsS from './useNewsS';
 
 type EventsSProps = NativeStackScreenProps<NewsStackParamList, 'News'>;
 
 export default function NewsS({ navigation }: EventsSProps) {
+  const { data, loading } = useNewsS();
   return (
     <Container>
       <Background />
       <Header1 title="NOTICIAS" />
-      <NewsList
-        data={newJson}
-        ItemSeparatorComponent={() => <Separator />}
-        ListFooterComponent={() => <Footer />}
-        renderItem={({ item }) => (
-          <NewCard
-            title={item.title}
-            shortDescription={item.shortDescription}
-            image={item.img}
-            onPress={() => {}}
-            // onPress={() => navigation.navigate('EventDetail')}
-            date={item.date}
-          />
-        )}
-        keyExtractor={item => String(item.id)}
-      />
+      {loading ? (
+        <Loading />
+      ) : (
+        <NewsList
+          data={data}
+          ItemSeparatorComponent={() => <Separator />}
+          ListFooterComponent={() => <Footer />}
+          renderItem={({ item }) => (
+            <NewCard
+              title={item.title}
+              shortDescription={item.short_description}
+              image={item.thumbnail_url}
+              onPress={() => {}}
+              // onPress={() => navigation.navigate('EventDetail')}
+              date={item.created_at}
+            />
+          )}
+          keyExtractor={item => String(item.news_id)}
+        />
+      )}
     </Container>
   );
 }
