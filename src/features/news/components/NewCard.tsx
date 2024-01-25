@@ -4,9 +4,7 @@ import { TextT1, TextT2 } from '../../../common/components/Text';
 import LinearGradient from 'react-native-linear-gradient';
 import { BlankSpace } from '../../../common/components/Layout';
 import RightArrowIcon from '../../../assets/icons/rightArrow.svg';
-import { StyleSheet } from 'react-native';
 import CustomButton from '../../../common/components/CustomButton';
-import styleEffects from '../../../common/helpers/styleEffects';
 import moment from 'moment';
 
 interface NewCardProps {
@@ -20,7 +18,7 @@ interface NewCardProps {
 export default function NewCard(props: NewCardProps) {
   return (
     <Container activeOpacity={1} onPress={props.onPress}>
-      <BackgroundContainer style={styleEffects.shadow}>
+      <BackgroundContainer>
         <Background
           source={{ uri: props.image }}
           defaultSource={require('../../../assets/images/defaultBackground.png')}
@@ -35,7 +33,7 @@ export default function NewCard(props: NewCardProps) {
           {props.shortDescription}
         </DescriptionText>
       </TextContainer>
-      <Button
+      <CustomButton
         title="Ver más"
         rightIcon={<RightArrowIcon />}
         onPress={props.onPress}
@@ -49,7 +47,7 @@ const Container = styled.TouchableOpacity`
   background-color: #fff;
   border-radius: 26px;
   align-items: center;
-  padding-bottom: 24px;
+  padding-bottom: 12px;
 `;
 const BackgroundContainer = styled.View`
   width: 100%;
@@ -94,8 +92,4 @@ const DescriptionText = styled(TextT2)`
   width: 100%;
   color: #131313;
   text-align: justify;
-`;
-const Button = styled(CustomButton)`
-  position: absolute;
-  bottom: -10px;
 `;

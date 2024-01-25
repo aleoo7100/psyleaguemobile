@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { EventsStackParamList } from '../../../navigation/EventsNavigator';
-import Header2 from '../../../common/components/headers/Header2';
 import LinearGradient from 'react-native-linear-gradient';
 import { Background, BlankSpace } from '../../../common/components/Layout';
 import { TextT1, TextT2 } from '../../../common/components/Text';
@@ -15,117 +14,117 @@ import TiktokIcon from '../../../assets/icons/tiktok.svg';
 import FacebookIcon from '../../../assets/icons/facebook.svg';
 import useEventDetailS from './useEventDetailS';
 import { Linking } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-type EventDetailSProps = NativeStackScreenProps<
-  EventsStackParamList,
-  'eventDetail'
->;
+type ScreenProps = NativeStackScreenProps<EventsStackParamList, 'eventDetail'>;
 
-export default function EventDetailS(props: EventDetailSProps) {
+export default function EventDetailS(props: ScreenProps) {
   const { data } = useEventDetailS({ events_id: props.route.params.events_id });
 
   const streamer = data?.events_streamers?.[0]?.streamer;
 
   return (
-    <Container>
-      <Background />
-      <Header2 title="evento" />
-      <ScrollContainer
-        contentContainerStyle={{ alignItems: 'center', paddingBottom: 60 }}>
-        <ImageContainer>
-          <Image
-            source={{ uri: data?.thumbnail_url || undefined }}
-            defaultSource={require('../../../assets/images/defaultBackground.png')}
-          />
-          <BlackGradient colors={['#2220', '#0009', '#000e']} />
-          <RegresiveTimerContainer date={data?.start_date} />
-        </ImageContainer>
-        <BodyContainer>
-          <TextT1
-            fontWeigth="Black"
-            TextSize="XXLarge"
-            textColor="Main"
-            align="center">
-            {data?.title?.toUpperCase()}
-          </TextT1>
-          <BlankSpace height={12} />
-          <TextT2>{moment(data?.start_date).format('DD/MM/YYYY')}</TextT2>
-          <BlankSpace height={12} />
-          <TextT2 align="center" TextSize="Large">
-            {data?.description}
-          </TextT2>
-        </BodyContainer>
-        <BlankSpace height={24} />
-        {streamer && (
-          <StreamerContainer>
-            <StreamerImage
-              source={{
-                uri: streamer?.photo_url || '',
-              }}
+    <SafeAreaView>
+      <Container>
+        <Background />
+        <ScrollContainer
+          contentContainerStyle={{ alignItems: 'center', paddingBottom: 60 }}>
+          <ImageContainer>
+            <Image
+              source={{ uri: data?.thumbnail_url || undefined }}
+              defaultSource={require('../../../assets/images/defaultBackground.png')}
             />
-            <TextT2
-              fontWeigth="Bold"
-              TextSize="Medium"
+            <BlackGradient colors={['#2220', '#0009', '#000e']} />
+            <RegresiveTimerContainer date={data?.start_date} />
+          </ImageContainer>
+          <BodyContainer>
+            <TextT1
+              fontWeigth="Black"
+              TextSize="XXLarge"
               textColor="Main"
               align="center">
-              {streamer?.nick_name}
-            </TextT2>
-            <TextT2 align="center" TextSize="XSmall">
-              Streamer oficial
-            </TextT2>
+              {data?.title?.toUpperCase()}
+            </TextT1>
             <BlankSpace height={12} />
-            <SocialMediaContainer>
-              {streamer?.instagram_url && (
-                <IconContainer
-                  onPress={() => {
-                    Linking.openURL(streamer?.instagram_url!);
-                  }}>
-                  <InstagramIcon width={26} height={26} />
-                </IconContainer>
-              )}
-              {streamer?.twitch_url && (
-                <IconContainer
-                  onPress={() => {
-                    Linking.openURL(streamer?.twitch_url!);
-                  }}>
-                  <TwitchIcon width={26} height={26} />
-                </IconContainer>
-              )}
-              {streamer?.youtube_url && (
-                <IconContainer
-                  onPress={() => {
-                    Linking.openURL(streamer?.youtube_url!);
-                  }}>
-                  <YoutubeIcon width={26} height={26} />
-                </IconContainer>
-              )}
-              {streamer?.tiktok_url && (
-                <IconContainer
-                  onPress={() => {
-                    Linking.openURL(streamer?.tiktok_url!);
-                  }}>
-                  <TiktokIcon width={26} height={26} />
-                </IconContainer>
-              )}
-              {streamer?.facebook_url && (
-                <IconContainer
-                  onPress={() => {
-                    Linking.openURL(streamer?.facebook_url!);
-                  }}>
-                  <FacebookIcon width={26} height={26} />
-                </IconContainer>
-              )}
-            </SocialMediaContainer>
-          </StreamerContainer>
-        )}
-      </ScrollContainer>
-    </Container>
+            <TextT2>{moment(data?.start_date).format('DD/MM/YYYY')}</TextT2>
+            <BlankSpace height={12} />
+            <TextT2 align="center" TextSize="Large">
+              {data?.description}
+            </TextT2>
+          </BodyContainer>
+          <BlankSpace height={24} />
+          {streamer && (
+            <StreamerContainer>
+              <StreamerImage
+                source={{
+                  uri: streamer?.photo_url || '',
+                }}
+              />
+              <TextT2
+                fontWeigth="Bold"
+                TextSize="Medium"
+                textColor="Main"
+                align="center">
+                {streamer?.nick_name}
+              </TextT2>
+              <TextT2 align="center" TextSize="XSmall">
+                Streamer oficial
+              </TextT2>
+              <BlankSpace height={12} />
+              <SocialMediaContainer>
+                {streamer?.instagram_url && (
+                  <IconContainer
+                    onPress={() => {
+                      Linking.openURL(streamer?.instagram_url!);
+                    }}>
+                    <InstagramIcon width={26} height={26} />
+                  </IconContainer>
+                )}
+                {streamer?.twitch_url && (
+                  <IconContainer
+                    onPress={() => {
+                      Linking.openURL(streamer?.twitch_url!);
+                    }}>
+                    <TwitchIcon width={26} height={26} />
+                  </IconContainer>
+                )}
+                {streamer?.youtube_url && (
+                  <IconContainer
+                    onPress={() => {
+                      Linking.openURL(streamer?.youtube_url!);
+                    }}>
+                    <YoutubeIcon width={26} height={26} />
+                  </IconContainer>
+                )}
+                {streamer?.tiktok_url && (
+                  <IconContainer
+                    onPress={() => {
+                      Linking.openURL(streamer?.tiktok_url!);
+                    }}>
+                    <TiktokIcon width={26} height={26} />
+                  </IconContainer>
+                )}
+                {streamer?.facebook_url && (
+                  <IconContainer
+                    onPress={() => {
+                      Linking.openURL(streamer?.facebook_url!);
+                    }}>
+                    <FacebookIcon width={26} height={26} />
+                  </IconContainer>
+                )}
+              </SocialMediaContainer>
+            </StreamerContainer>
+          )}
+        </ScrollContainer>
+      </Container>
+    </SafeAreaView>
   );
 }
 
-const Container = styled.SafeAreaView`
+const Container = styled.View`
   width: 100%;
   height: 100%;
+  padding-top: 60px;
   background-color: #000;
   align-items: center;
 `;

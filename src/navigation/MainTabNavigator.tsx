@@ -52,7 +52,7 @@ export default function MainTabNavigator() {
             <CustomTabBarButton
               {...props}
               icon={<MegaphoneIcon width={30} height={30} />}
-              title="Noticias"
+              title="Artículos"
             />
           ),
         }}

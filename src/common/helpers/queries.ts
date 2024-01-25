@@ -72,16 +72,77 @@ export const NEWS_DETAIL_QUERY = gql(`
   }
 `);
 
-// export const VIDEO_DETAIL = gql(`
-//   query VIDEO_DETAIL($videos_id: String!) {
-//     videos_by_pk(videos_id: $videos_id) {
-//       videos_id
-//       title
-//       description
-//       thumbnail_urlå
-//       youtube_id
-//       created_at
-//       updated_at
-//     }
-//   }
-// `);
+export const VIDEO_LIST_BY_CATEGORIES_QUERY = gql(`
+  query VIDEO_LIST_BY_CATEGORIES_QUERY {
+    video_cagetories(order_by: { created_at: desc }) {
+      videos_cagetories_id
+      name
+      created_at
+      updated_at
+      video_categories_videos(order_by: { created_at: desc }) {
+        video_categories_videos_id
+        video{
+          videos_id
+          title
+          description
+          thumbnail_url
+          created_at
+          updated_at
+        }
+      }
+    }
+  }
+`);
+
+export const VIDEO_DETAIL = gql(`
+  query VIDEO_DETAIL($videos_id: String!) {
+    videos_by_pk(videos_id: $videos_id) {
+      videos_id
+      title
+      description
+      thumbnail_url
+      youtube_id
+      created_at
+      updated_at
+    }
+  }
+`);
+
+export const RANKING_LIST_QUERY = gql(`
+  query RANKING_LIST_QUERY {
+    users {
+      users_id
+      full_name
+      nick_name
+      users_games_points{
+        points
+      }
+      avatar_url
+    }
+  }
+`);
+
+export const PARTNERS_STREAMERS_QUERY = gql(`
+  query PARTNERS_STREAMERS_QUERY {
+    partners {
+      partners_id
+      name
+      logo_url
+      created_at
+      updated_at
+    }
+    streamers {
+      streamers_id
+      full_name
+      nick_name
+      photo_url
+      instagram_url
+      facebook_url
+      tiktok_url
+      twitch_url
+      youtube_url
+      created_at
+      updated_at
+    }
+  }
+`);

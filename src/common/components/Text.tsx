@@ -7,6 +7,7 @@ const GeneralText = styled.Text<{
   fontWeigth?: 'Regular' | 'Bold' | 'Black';
   textColor?: 'Main' | 'White' | 'Black';
   TextSize?:
+    | 'XXSmall'
     | 'XSmall'
     | 'Small'
     | 'Medium'
@@ -23,7 +24,8 @@ const GeneralText = styled.Text<{
     else return '#fff';
   }};
   font-size: ${props => {
-    if (props.TextSize === 'XSmall') return '10px';
+    if (props.TextSize === 'XXSmall') return '8px';
+    else if (props.TextSize === 'XSmall') return '10px';
     else if (props.TextSize === 'Small') return '12px';
     else if (props.TextSize === 'Medium') return '14px';
     else if (props.TextSize === 'Large') return '16px';

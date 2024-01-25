@@ -1,21 +1,27 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { Background } from '../../common/components/Layout';
-import Header1 from '../../common/components/headers/Header1';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { ProfileStackParamList } from '../../navigation/ProfileNavigator';
+import { TextT1 } from '../../common/components/Text';
 
-export default function ProfileS() {
+type ScreenProps = NativeStackScreenProps<ProfileStackParamList, 'profile'>;
+
+export default function ProfileS(props: ScreenProps) {
   return (
-    <Container>
-      <Background />
-      <Header1 title="PERFIL" />
-      <Text>ProfileS</Text>
-    </Container>
+    <SafeAreaView>
+      <Container>
+        <Background />
+        <TextT1>Profile</TextT1>
+      </Container>
+    </SafeAreaView>
   );
 }
 
-const Container = styled.SafeAreaView`
+const Container = styled.View`
   width: 100%;
   height: 100%;
+  padding-top: 60px;
   background-color: #000;
 `;
-const Text = styled.Text``;

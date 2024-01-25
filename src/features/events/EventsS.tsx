@@ -4,48 +4,52 @@ import styled from 'styled-components/native';
 import EventCard from './components/EventCard';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { EventsStackParamList } from '../../navigation/EventsNavigator';
-import Header1 from '../../common/components/headers/Header1';
 import { Background } from '../../common/components/Layout';
 import useEventsS from './useEventsS';
 import Loading from '../../common/components/Loading';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-type EventsSProps = NativeStackScreenProps<EventsStackParamList, 'events'>;
+type ScreenProps = NativeStackScreenProps<EventsStackParamList, 'events'>;
 
-export default function EventsS(props: EventsSProps) {
-  const { data, loading } = useEventsS();
+export default function EventsS(props: ScreenProps) {
+  const { data, loading, isRefreshing, refetch } = useEventsS();
   return (
-    <Container>
-      <Background />
-      <Header1 title="EVENTOS" />
-      {loading ? (
-        <Loading />
-      ) : (
-        <EventList
-          data={data}
-          ItemSeparatorComponent={() => <Separator />}
-          ListFooterComponent={() => <Footer />}
-          renderItem={({ item }) => (
-            <EventCard
-              name={item.title}
-              image={item.thumbnail_url}
-              onPress={() =>
-                props.navigation.navigate('eventDetail', {
-                  events_id: item.events_id,
-                })
-              }
-              eventDate={item.start_date}
-            />
-          )}
-          keyExtractor={item => String(item.events_id)}
-        />
-      )}
-    </Container>
+    <SafeAreaView>
+      <Container>
+        <Background />
+        {loading && !isRefreshing ? (
+          <Loading />
+        ) : (
+          <EventList
+            data={data}
+            refreshing={isRefreshing}
+            onRefresh={refetch}
+            ItemSeparatorComponent={() => <Separator />}
+            ListFooterComponent={() => <Footer />}
+            renderItem={({ item }) => (
+              <EventCard
+                name={item.title}
+                image={item.thumbnail_url}
+                onPress={() =>
+                  props.navigation.navigate('eventDetail', {
+                    events_id: item.events_id,
+                  })
+                }
+                eventDate={item.start_date}
+              />
+            )}
+            keyExtractor={item => String(item.events_id)}
+          />
+        )}
+      </Container>
+    </SafeAreaView>
   );
 }
 
-const Container = styled.SafeAreaView`
+const Container = styled.View`
   width: 100%;
   height: 100%;
+  padding-top: 60px;
   background-color: #000;
 `;
 
