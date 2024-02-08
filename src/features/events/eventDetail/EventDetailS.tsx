@@ -3,131 +3,98 @@ import styled from 'styled-components/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { EventsStackParamList } from '../../../navigation/EventsNavigator';
 import LinearGradient from 'react-native-linear-gradient';
-import { Background, BlankSpace } from '../../../common/components/Layout';
+import { BlankSpace, Layout1 } from '../../../common/components/Layout';
 import { TextT1, TextT2 } from '../../../common/components/Text';
 import moment from 'moment';
 import RegresiveTimer from '../components/RegresiveTimer';
-import InstagramIcon from '../../../assets/icons/instagram.svg';
-import TwitchIcon from '../../../assets/icons/twitch.svg';
-import YoutubeIcon from '../../../assets/icons/youtube.svg';
-import TiktokIcon from '../../../assets/icons/tiktok.svg';
-import FacebookIcon from '../../../assets/icons/facebook.svg';
 import useEventDetailS from './useEventDetailS';
+import SocialTouchableIcons from '../../../common/components/SocialTouchableIcons';
+import { calculateTimeLeft } from '../../../common/helpers/calculateTimeLeft';
+import CustomButton from '../../../common/components/CustomButton';
 import { Linking } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 type ScreenProps = NativeStackScreenProps<EventsStackParamList, 'eventDetail'>;
 
 export default function EventDetailS(props: ScreenProps) {
-  const { data } = useEventDetailS({ events_id: props.route.params.events_id });
+  const { data, loading } = useEventDetailS({
+    events_id: props.route.params.events_id,
+  });
 
   const streamer = data?.events_streamers?.[0]?.streamer;
 
   return (
-    <SafeAreaView>
-      <Container>
-        <Background />
-        <ScrollContainer
-          contentContainerStyle={{ alignItems: 'center', paddingBottom: 60 }}>
-          <ImageContainer>
-            <Image
-              source={{ uri: data?.thumbnail_url || undefined }}
-              defaultSource={require('../../../assets/images/defaultBackground.png')}
+    <Layout1 loading={loading}>
+      <ScrollContainer
+        contentContainerStyle={{ alignItems: 'center', paddingBottom: 60 }}>
+        <ImageContainer>
+          <Image
+            source={{ uri: data?.thumbnail_url || undefined }}
+            defaultSource={require('../../../assets/images/defaultBackground.png')}
+          />
+          <BlackGradient colors={['#2220', '#0009', '#000e']} />
+          <RegresiveTimerContainer date={data?.start_date} />
+        </ImageContainer>
+        <BodyContainer>
+          <TextT1
+            fontWeigth="Black"
+            TextSize="XXLarge"
+            textColor="Main"
+            align="center">
+            {data?.title?.toUpperCase()}
+          </TextT1>
+          <BlankSpace height={12} />
+          <TextT2>{moment(data?.start_date).format('DD/MM/YYYY')}</TextT2>
+          <BlankSpace height={12} />
+          {data?.registration_url &&
+            calculateTimeLeft(data?.start_date).isPositive && (
+              <>
+                <CustomButton
+                  fullFill
+                  onPress={() => Linking.openURL(data?.registration_url!)}>
+                  <TextT1 TextSize="Medium" fontWeigth="Black">
+                    INSCRÍBETE
+                  </TextT1>
+                </CustomButton>
+                <BlankSpace height={16} />
+              </>
+            )}
+          <TextT2 align="center" TextSize="Large">
+            {data?.description}
+          </TextT2>
+        </BodyContainer>
+        <BlankSpace height={24} />
+        {streamer && (
+          <StreamerContainer>
+            <StreamerImage
+              source={{
+                uri: streamer?.photo_url || '',
+              }}
             />
-            <BlackGradient colors={['#2220', '#0009', '#000e']} />
-            <RegresiveTimerContainer date={data?.start_date} />
-          </ImageContainer>
-          <BodyContainer>
-            <TextT1
-              fontWeigth="Black"
-              TextSize="XXLarge"
+            <TextT2
+              fontWeigth="Bold"
+              TextSize="Medium"
               textColor="Main"
               align="center">
-              {data?.title?.toUpperCase()}
-            </TextT1>
-            <BlankSpace height={12} />
-            <TextT2>{moment(data?.start_date).format('DD/MM/YYYY')}</TextT2>
-            <BlankSpace height={12} />
-            <TextT2 align="center" TextSize="Large">
-              {data?.description}
+              {streamer?.nick_name}
             </TextT2>
-          </BodyContainer>
-          <BlankSpace height={24} />
-          {streamer && (
-            <StreamerContainer>
-              <StreamerImage
-                source={{
-                  uri: streamer?.photo_url || '',
-                }}
-              />
-              <TextT2
-                fontWeigth="Bold"
-                TextSize="Medium"
-                textColor="Main"
-                align="center">
-                {streamer?.nick_name}
-              </TextT2>
-              <TextT2 align="center" TextSize="XSmall">
-                Streamer oficial
-              </TextT2>
-              <BlankSpace height={12} />
-              <SocialMediaContainer>
-                {streamer?.instagram_url && (
-                  <IconContainer
-                    onPress={() => {
-                      Linking.openURL(streamer?.instagram_url!);
-                    }}>
-                    <InstagramIcon width={26} height={26} />
-                  </IconContainer>
-                )}
-                {streamer?.twitch_url && (
-                  <IconContainer
-                    onPress={() => {
-                      Linking.openURL(streamer?.twitch_url!);
-                    }}>
-                    <TwitchIcon width={26} height={26} />
-                  </IconContainer>
-                )}
-                {streamer?.youtube_url && (
-                  <IconContainer
-                    onPress={() => {
-                      Linking.openURL(streamer?.youtube_url!);
-                    }}>
-                    <YoutubeIcon width={26} height={26} />
-                  </IconContainer>
-                )}
-                {streamer?.tiktok_url && (
-                  <IconContainer
-                    onPress={() => {
-                      Linking.openURL(streamer?.tiktok_url!);
-                    }}>
-                    <TiktokIcon width={26} height={26} />
-                  </IconContainer>
-                )}
-                {streamer?.facebook_url && (
-                  <IconContainer
-                    onPress={() => {
-                      Linking.openURL(streamer?.facebook_url!);
-                    }}>
-                    <FacebookIcon width={26} height={26} />
-                  </IconContainer>
-                )}
-              </SocialMediaContainer>
-            </StreamerContainer>
-          )}
-        </ScrollContainer>
-      </Container>
-    </SafeAreaView>
+            <TextT2 align="center" TextSize="XSmall">
+              Streamer oficial
+            </TextT2>
+            <BlankSpace height={12} />
+            <SocialTouchableIcons
+              instagram_url={streamer?.instagram_url}
+              twitch_url={streamer?.twitch_url}
+              youtube_url={streamer?.youtube_url}
+              tiktok_url={streamer?.tiktok_url}
+              facebook_url={streamer?.facebook_url}
+            />
+          </StreamerContainer>
+        )}
+      </ScrollContainer>
+    </Layout1>
   );
 }
 
-const Container = styled.View`
-  width: 100%;
-  height: 100%;
-  padding-top: 60px;
-  background-color: #000;
-  align-items: center;
-`;
 const ScrollContainer = styled.ScrollView`
   width: 100%;
   height: 100%;
@@ -151,6 +118,7 @@ const BodyContainer = styled.View`
   width: 100%;
   flex: 1;
   padding: 0 24px;
+  padding-top: 16px;
   align-items: center;
 `;
 const RegresiveTimerContainer = styled(RegresiveTimer)`
@@ -169,18 +137,6 @@ const StreamerContainer = styled.View`
   padding: 24px;
   background-color: #1f1f1f;
   border-radius: 40px;
-  align-items: center;
-  justify-content: center;
-`;
-const SocialMediaContainer = styled.View`
-  width: 80%;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-`;
-const IconContainer = styled.TouchableOpacity`
-  width: 50px;
-  height: 50px;
   align-items: center;
   justify-content: center;
 `;

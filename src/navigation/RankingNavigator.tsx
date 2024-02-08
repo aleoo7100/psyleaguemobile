@@ -31,5 +31,5 @@ export default function RankingNavigator() {
 
 export type RankingStackParamList = {
   ranking: undefined;
-  rankingdDetail: { users_id: string };
+  rankingdDetail: { users_id: string; ranking: number };
 };

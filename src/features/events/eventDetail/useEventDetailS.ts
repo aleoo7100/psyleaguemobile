@@ -11,6 +11,5 @@ export default function useEventDetailS(props: UseEventsSProps) {
       events_id: props.events_id,
     },
   });
-  console.log('data', data);
   return { data: data?.events_by_pk, loading };
 }

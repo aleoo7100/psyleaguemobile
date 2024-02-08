@@ -285,6 +285,7 @@ export type News = {
   __typename?: 'news';
   content: Scalars['String']['output'];
   created_at: Scalars['timestamp']['output'];
+  html_content?: Maybe<Scalars['String']['output']>;
   news_id: Scalars['String']['output'];
   short_description: Scalars['String']['output'];
   thumbnail_url: Scalars['String']['output'];
@@ -299,6 +300,7 @@ export type News_Bool_Exp = {
   _or?: InputMaybe<Array<News_Bool_Exp>>;
   content?: InputMaybe<String_Comparison_Exp>;
   created_at?: InputMaybe<Timestamp_Comparison_Exp>;
+  html_content?: InputMaybe<String_Comparison_Exp>;
   news_id?: InputMaybe<String_Comparison_Exp>;
   short_description?: InputMaybe<String_Comparison_Exp>;
   thumbnail_url?: InputMaybe<String_Comparison_Exp>;
@@ -310,6 +312,7 @@ export type News_Bool_Exp = {
 export type News_Order_By = {
   content?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
+  html_content?: InputMaybe<Order_By>;
   news_id?: InputMaybe<Order_By>;
   short_description?: InputMaybe<Order_By>;
   thumbnail_url?: InputMaybe<Order_By>;
@@ -323,6 +326,8 @@ export enum News_Select_Column {
   Content = 'content',
   /** column name */
   CreatedAt = 'created_at',
+  /** column name */
+  HtmlContent = 'html_content',
   /** column name */
   NewsId = 'news_id',
   /** column name */
@@ -347,6 +352,7 @@ export type News_Stream_Cursor_Input = {
 export type News_Stream_Cursor_Value_Input = {
   content?: InputMaybe<Scalars['String']['input']>;
   created_at?: InputMaybe<Scalars['timestamp']['input']>;
+  html_content?: InputMaybe<Scalars['String']['input']>;
   news_id?: InputMaybe<Scalars['String']['input']>;
   short_description?: InputMaybe<Scalars['String']['input']>;
   thumbnail_url?: InputMaybe<Scalars['String']['input']>;
@@ -374,10 +380,17 @@ export enum Order_By {
 export type Partners = {
   __typename?: 'partners';
   created_at: Scalars['timestamp']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  facebook_url?: Maybe<Scalars['String']['output']>;
+  instagram_url?: Maybe<Scalars['String']['output']>;
   logo_url: Scalars['String']['output'];
   name: Scalars['String']['output'];
   partners_id: Scalars['String']['output'];
+  tiktok_url?: Maybe<Scalars['String']['output']>;
+  twitch_url?: Maybe<Scalars['String']['output']>;
   updated_at: Scalars['timestamp']['output'];
+  website_url?: Maybe<Scalars['String']['output']>;
+  youtube_url?: Maybe<Scalars['String']['output']>;
 };
 
 /** Boolean expression to filter rows from the table "partners". All fields are combined with a logical 'AND'. */
@@ -386,19 +399,33 @@ export type Partners_Bool_Exp = {
   _not?: InputMaybe<Partners_Bool_Exp>;
   _or?: InputMaybe<Array<Partners_Bool_Exp>>;
   created_at?: InputMaybe<Timestamp_Comparison_Exp>;
+  description?: InputMaybe<String_Comparison_Exp>;
+  facebook_url?: InputMaybe<String_Comparison_Exp>;
+  instagram_url?: InputMaybe<String_Comparison_Exp>;
   logo_url?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
   partners_id?: InputMaybe<String_Comparison_Exp>;
+  tiktok_url?: InputMaybe<String_Comparison_Exp>;
+  twitch_url?: InputMaybe<String_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamp_Comparison_Exp>;
+  website_url?: InputMaybe<String_Comparison_Exp>;
+  youtube_url?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** Ordering options when selecting data from "partners". */
 export type Partners_Order_By = {
   created_at?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  facebook_url?: InputMaybe<Order_By>;
+  instagram_url?: InputMaybe<Order_By>;
   logo_url?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   partners_id?: InputMaybe<Order_By>;
+  tiktok_url?: InputMaybe<Order_By>;
+  twitch_url?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
+  website_url?: InputMaybe<Order_By>;
+  youtube_url?: InputMaybe<Order_By>;
 };
 
 /** select columns of table "partners" */
@@ -406,13 +433,27 @@ export enum Partners_Select_Column {
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
+  Description = 'description',
+  /** column name */
+  FacebookUrl = 'facebook_url',
+  /** column name */
+  InstagramUrl = 'instagram_url',
+  /** column name */
   LogoUrl = 'logo_url',
   /** column name */
   Name = 'name',
   /** column name */
   PartnersId = 'partners_id',
   /** column name */
-  UpdatedAt = 'updated_at'
+  TiktokUrl = 'tiktok_url',
+  /** column name */
+  TwitchUrl = 'twitch_url',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  WebsiteUrl = 'website_url',
+  /** column name */
+  YoutubeUrl = 'youtube_url'
 }
 
 /** Streaming cursor of the table "partners" */
@@ -426,10 +467,17 @@ export type Partners_Stream_Cursor_Input = {
 /** Initial value of the column from where the streaming should start */
 export type Partners_Stream_Cursor_Value_Input = {
   created_at?: InputMaybe<Scalars['timestamp']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  facebook_url?: InputMaybe<Scalars['String']['input']>;
+  instagram_url?: InputMaybe<Scalars['String']['input']>;
   logo_url?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   partners_id?: InputMaybe<Scalars['String']['input']>;
+  tiktok_url?: InputMaybe<Scalars['String']['input']>;
+  twitch_url?: InputMaybe<Scalars['String']['input']>;
   updated_at?: InputMaybe<Scalars['timestamp']['input']>;
+  website_url?: InputMaybe<Scalars['String']['input']>;
+  youtube_url?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Query_Root = {
@@ -620,6 +668,7 @@ export type Query_RootVideos_By_PkArgs = {
 export type Streamers = {
   __typename?: 'streamers';
   created_at: Scalars['timestamp']['output'];
+  description?: Maybe<Scalars['String']['output']>;
   /** An array relationship */
   events_streamers: Array<Events_Streamers>;
   facebook_url?: Maybe<Scalars['String']['output']>;
@@ -631,6 +680,7 @@ export type Streamers = {
   tiktok_url?: Maybe<Scalars['String']['output']>;
   twitch_url?: Maybe<Scalars['String']['output']>;
   updated_at: Scalars['timestamp']['output'];
+  website_url?: Maybe<Scalars['String']['output']>;
   youtube_url?: Maybe<Scalars['String']['output']>;
 };
 
@@ -650,6 +700,7 @@ export type Streamers_Bool_Exp = {
   _not?: InputMaybe<Streamers_Bool_Exp>;
   _or?: InputMaybe<Array<Streamers_Bool_Exp>>;
   created_at?: InputMaybe<Timestamp_Comparison_Exp>;
+  description?: InputMaybe<String_Comparison_Exp>;
   events_streamers?: InputMaybe<Events_Streamers_Bool_Exp>;
   facebook_url?: InputMaybe<String_Comparison_Exp>;
   full_name?: InputMaybe<String_Comparison_Exp>;
@@ -660,12 +711,14 @@ export type Streamers_Bool_Exp = {
   tiktok_url?: InputMaybe<String_Comparison_Exp>;
   twitch_url?: InputMaybe<String_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamp_Comparison_Exp>;
+  website_url?: InputMaybe<String_Comparison_Exp>;
   youtube_url?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** Ordering options when selecting data from "streamers". */
 export type Streamers_Order_By = {
   created_at?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
   events_streamers_aggregate?: InputMaybe<Events_Streamers_Aggregate_Order_By>;
   facebook_url?: InputMaybe<Order_By>;
   full_name?: InputMaybe<Order_By>;
@@ -676,6 +729,7 @@ export type Streamers_Order_By = {
   tiktok_url?: InputMaybe<Order_By>;
   twitch_url?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
+  website_url?: InputMaybe<Order_By>;
   youtube_url?: InputMaybe<Order_By>;
 };
 
@@ -683,6 +737,8 @@ export type Streamers_Order_By = {
 export enum Streamers_Select_Column {
   /** column name */
   CreatedAt = 'created_at',
+  /** column name */
+  Description = 'description',
   /** column name */
   FacebookUrl = 'facebook_url',
   /** column name */
@@ -702,6 +758,8 @@ export enum Streamers_Select_Column {
   /** column name */
   UpdatedAt = 'updated_at',
   /** column name */
+  WebsiteUrl = 'website_url',
+  /** column name */
   YoutubeUrl = 'youtube_url'
 }
 
@@ -716,6 +774,7 @@ export type Streamers_Stream_Cursor_Input = {
 /** Initial value of the column from where the streaming should start */
 export type Streamers_Stream_Cursor_Value_Input = {
   created_at?: InputMaybe<Scalars['timestamp']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
   facebook_url?: InputMaybe<Scalars['String']['input']>;
   full_name?: InputMaybe<Scalars['String']['input']>;
   instagram_url?: InputMaybe<Scalars['String']['input']>;
@@ -725,6 +784,7 @@ export type Streamers_Stream_Cursor_Value_Input = {
   tiktok_url?: InputMaybe<Scalars['String']['input']>;
   twitch_url?: InputMaybe<Scalars['String']['input']>;
   updated_at?: InputMaybe<Scalars['timestamp']['input']>;
+  website_url?: InputMaybe<Scalars['String']['input']>;
   youtube_url?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -1559,7 +1619,7 @@ export type News_Detail_QueryQueryVariables = Exact<{
 }>;
 
 
-export type News_Detail_QueryQuery = { __typename?: 'query_root', news_by_pk?: { __typename?: 'news', news_id: string, title: string, content: string, thumbnail_url: string, short_description: string, created_at: any, updated_at: any } | null };
+export type News_Detail_QueryQuery = { __typename?: 'query_root', news_by_pk?: { __typename?: 'news', news_id: string, title: string, content: string, thumbnail_url: string, html_content?: string | null, short_description: string, created_at: any, updated_at: any } | null };
 
 export type Video_List_By_Categories_QueryQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1583,12 +1643,37 @@ export type Partners_Streamers_QueryQueryVariables = Exact<{ [key: string]: neve
 
 export type Partners_Streamers_QueryQuery = { __typename?: 'query_root', partners: Array<{ __typename?: 'partners', partners_id: string, name: string, logo_url: string, created_at: any, updated_at: any }>, streamers: Array<{ __typename?: 'streamers', streamers_id: string, full_name: string, nick_name: string, photo_url?: string | null, instagram_url?: string | null, facebook_url?: string | null, tiktok_url?: string | null, twitch_url?: string | null, youtube_url?: string | null, created_at: any, updated_at: any }> };
 
+export type Partner_Detail_QueryQueryVariables = Exact<{
+  partners_id: Scalars['String']['input'];
+  streamers_id: Scalars['String']['input'];
+}>;
+
+
+export type Partner_Detail_QueryQuery = { __typename?: 'query_root', partners_by_pk?: { __typename?: 'partners', partners_id: string, name: string, logo_url: string, created_at: any, updated_at: any, facebook_url?: string | null, instagram_url?: string | null, tiktok_url?: string | null, twitch_url?: string | null, website_url?: string | null, youtube_url?: string | null, description?: string | null } | null, streamers_by_pk?: { __typename?: 'streamers', streamers_id: string, full_name: string, nick_name: string, photo_url?: string | null, instagram_url?: string | null, facebook_url?: string | null, tiktok_url?: string | null, twitch_url?: string | null, youtube_url?: string | null, created_at: any, updated_at: any, website_url?: string | null, description?: string | null } | null };
+
+export type Ranking_User_QueryQueryVariables = Exact<{
+  users_id: Scalars['String']['input'];
+}>;
+
+
+export type Ranking_User_QueryQuery = { __typename?: 'query_root', users_by_pk?: { __typename?: 'users', users_id: string, full_name?: string | null, nick_name?: string | null, avatar_url?: string | null, users_games_points: Array<{ __typename?: 'users_games_points', points: number, event: { __typename?: 'events', events_id: string, title: string, start_date: any } }> } | null };
+
+export type Get_My_Profile_QueryQueryVariables = Exact<{
+  email: Scalars['String']['input'];
+}>;
+
+
+export type Get_My_Profile_QueryQuery = { __typename?: 'query_root', users: Array<{ __typename?: 'users', users_id: string, full_name?: string | null, nick_name?: string | null, email: string, avatar_url?: string | null, country?: string | null, fnite_server_region?: string | null, instagram_username?: string | null, phone?: string | null, phone_code?: string | null, created_at: any, updated_at: any, users_games_points: Array<{ __typename?: 'users_games_points', points: number, event: { __typename?: 'events', events_id: string, title: string, start_date: any } }> }> };
+
 
 export const Event_List_QueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"EVENT_LIST_QUERY"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"events"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"order_by"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"created_at"},"value":{"kind":"EnumValue","value":"desc"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"events_id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail_url"}},{"kind":"Field","name":{"kind":"Name","value":"start_date"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"end_date"}},{"kind":"Field","name":{"kind":"Name","value":"registration_url"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","name":{"kind":"Name","value":"updated_at"}}]}}]}}]} as unknown as DocumentNode<Event_List_QueryQuery, Event_List_QueryQueryVariables>;
 export const Event_Detail_QueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"EVENT_DETAIL_QUERY"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"events_id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"events_by_pk"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"events_id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"events_id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"events_id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail_url"}},{"kind":"Field","name":{"kind":"Name","value":"start_date"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"end_date"}},{"kind":"Field","name":{"kind":"Name","value":"registration_url"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","name":{"kind":"Name","value":"updated_at"}},{"kind":"Field","name":{"kind":"Name","value":"events_streamers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"streamer"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"full_name"}},{"kind":"Field","name":{"kind":"Name","value":"nick_name"}},{"kind":"Field","name":{"kind":"Name","value":"photo_url"}},{"kind":"Field","name":{"kind":"Name","value":"instagram_url"}},{"kind":"Field","name":{"kind":"Name","value":"facebook_url"}},{"kind":"Field","name":{"kind":"Name","value":"tiktok_url"}},{"kind":"Field","name":{"kind":"Name","value":"twitch_url"}},{"kind":"Field","name":{"kind":"Name","value":"youtube_url"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Event_Detail_QueryQuery, Event_Detail_QueryQueryVariables>;
 export const News_List_QueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"NEWS_LIST_QUERY"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"news"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"order_by"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"created_at"},"value":{"kind":"EnumValue","value":"desc"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"news_id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail_url"}},{"kind":"Field","name":{"kind":"Name","value":"short_description"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","name":{"kind":"Name","value":"updated_at"}}]}}]}}]} as unknown as DocumentNode<News_List_QueryQuery, News_List_QueryQueryVariables>;
-export const News_Detail_QueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"NEWS_DETAIL_QUERY"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"news_id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"news_by_pk"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"news_id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"news_id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"news_id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail_url"}},{"kind":"Field","name":{"kind":"Name","value":"short_description"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","name":{"kind":"Name","value":"updated_at"}}]}}]}}]} as unknown as DocumentNode<News_Detail_QueryQuery, News_Detail_QueryQueryVariables>;
+export const News_Detail_QueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"NEWS_DETAIL_QUERY"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"news_id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"news_by_pk"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"news_id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"news_id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"news_id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail_url"}},{"kind":"Field","name":{"kind":"Name","value":"html_content"}},{"kind":"Field","name":{"kind":"Name","value":"short_description"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","name":{"kind":"Name","value":"updated_at"}}]}}]}}]} as unknown as DocumentNode<News_Detail_QueryQuery, News_Detail_QueryQueryVariables>;
 export const Video_List_By_Categories_QueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"VIDEO_LIST_BY_CATEGORIES_QUERY"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"video_cagetories"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"order_by"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"created_at"},"value":{"kind":"EnumValue","value":"desc"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"videos_cagetories_id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","name":{"kind":"Name","value":"updated_at"}},{"kind":"Field","name":{"kind":"Name","value":"video_categories_videos"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"order_by"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"created_at"},"value":{"kind":"EnumValue","value":"desc"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"video_categories_videos_id"}},{"kind":"Field","name":{"kind":"Name","value":"video"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"videos_id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail_url"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","name":{"kind":"Name","value":"updated_at"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Video_List_By_Categories_QueryQuery, Video_List_By_Categories_QueryQueryVariables>;
 export const Video_DetailDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"VIDEO_DETAIL"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"videos_id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"videos_by_pk"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"videos_id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"videos_id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"videos_id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail_url"}},{"kind":"Field","name":{"kind":"Name","value":"youtube_id"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","name":{"kind":"Name","value":"updated_at"}}]}}]}}]} as unknown as DocumentNode<Video_DetailQuery, Video_DetailQueryVariables>;
 export const Ranking_List_QueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"RANKING_LIST_QUERY"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"users"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"users_id"}},{"kind":"Field","name":{"kind":"Name","value":"full_name"}},{"kind":"Field","name":{"kind":"Name","value":"nick_name"}},{"kind":"Field","name":{"kind":"Name","value":"users_games_points"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"points"}}]}},{"kind":"Field","name":{"kind":"Name","value":"avatar_url"}}]}}]}}]} as unknown as DocumentNode<Ranking_List_QueryQuery, Ranking_List_QueryQueryVariables>;
 export const Partners_Streamers_QueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"PARTNERS_STREAMERS_QUERY"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"partners"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"partners_id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"logo_url"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","name":{"kind":"Name","value":"updated_at"}}]}},{"kind":"Field","name":{"kind":"Name","value":"streamers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"streamers_id"}},{"kind":"Field","name":{"kind":"Name","value":"full_name"}},{"kind":"Field","name":{"kind":"Name","value":"nick_name"}},{"kind":"Field","name":{"kind":"Name","value":"photo_url"}},{"kind":"Field","name":{"kind":"Name","value":"instagram_url"}},{"kind":"Field","name":{"kind":"Name","value":"facebook_url"}},{"kind":"Field","name":{"kind":"Name","value":"tiktok_url"}},{"kind":"Field","name":{"kind":"Name","value":"twitch_url"}},{"kind":"Field","name":{"kind":"Name","value":"youtube_url"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","name":{"kind":"Name","value":"updated_at"}}]}}]}}]} as unknown as DocumentNode<Partners_Streamers_QueryQuery, Partners_Streamers_QueryQueryVariables>;
+export const Partner_Detail_QueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"PARTNER_DETAIL_QUERY"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"partners_id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"streamers_id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"partners_by_pk"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"partners_id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"partners_id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"partners_id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"logo_url"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","name":{"kind":"Name","value":"updated_at"}},{"kind":"Field","name":{"kind":"Name","value":"facebook_url"}},{"kind":"Field","name":{"kind":"Name","value":"instagram_url"}},{"kind":"Field","name":{"kind":"Name","value":"tiktok_url"}},{"kind":"Field","name":{"kind":"Name","value":"twitch_url"}},{"kind":"Field","name":{"kind":"Name","value":"website_url"}},{"kind":"Field","name":{"kind":"Name","value":"youtube_url"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}},{"kind":"Field","name":{"kind":"Name","value":"streamers_by_pk"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"streamers_id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"streamers_id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"streamers_id"}},{"kind":"Field","name":{"kind":"Name","value":"full_name"}},{"kind":"Field","name":{"kind":"Name","value":"nick_name"}},{"kind":"Field","name":{"kind":"Name","value":"photo_url"}},{"kind":"Field","name":{"kind":"Name","value":"instagram_url"}},{"kind":"Field","name":{"kind":"Name","value":"facebook_url"}},{"kind":"Field","name":{"kind":"Name","value":"tiktok_url"}},{"kind":"Field","name":{"kind":"Name","value":"twitch_url"}},{"kind":"Field","name":{"kind":"Name","value":"youtube_url"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","name":{"kind":"Name","value":"updated_at"}},{"kind":"Field","name":{"kind":"Name","value":"website_url"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]}}]} as unknown as DocumentNode<Partner_Detail_QueryQuery, Partner_Detail_QueryQueryVariables>;
+export const Ranking_User_QueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"RANKING_USER_QUERY"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"users_id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"users_by_pk"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"users_id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"users_id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"users_id"}},{"kind":"Field","name":{"kind":"Name","value":"full_name"}},{"kind":"Field","name":{"kind":"Name","value":"nick_name"}},{"kind":"Field","name":{"kind":"Name","value":"avatar_url"}},{"kind":"Field","name":{"kind":"Name","value":"users_games_points"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"points"}},{"kind":"Field","name":{"kind":"Name","value":"event"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"events_id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"start_date"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Ranking_User_QueryQuery, Ranking_User_QueryQueryVariables>;
+export const Get_My_Profile_QueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GET_MY_PROFILE_QUERY"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"email"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"users"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"email"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"email"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"users_id"}},{"kind":"Field","name":{"kind":"Name","value":"full_name"}},{"kind":"Field","name":{"kind":"Name","value":"nick_name"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"avatar_url"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"fnite_server_region"}},{"kind":"Field","name":{"kind":"Name","value":"instagram_username"}},{"kind":"Field","name":{"kind":"Name","value":"phone"}},{"kind":"Field","name":{"kind":"Name","value":"phone_code"}},{"kind":"Field","name":{"kind":"Name","value":"created_at"}},{"kind":"Field","name":{"kind":"Name","value":"updated_at"}},{"kind":"Field","name":{"kind":"Name","value":"users_games_points"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"points"}},{"kind":"Field","name":{"kind":"Name","value":"event"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"events_id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"start_date"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Get_My_Profile_QueryQuery, Get_My_Profile_QueryQueryVariables>;

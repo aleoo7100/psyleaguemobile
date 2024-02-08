@@ -9,14 +9,16 @@ interface CustomButtonProps extends TouchableOpacityProps {
   title?: string;
   rightIcon?: React.ReactNode;
   children?: React.ReactNode;
+  fullFill?: boolean;
 }
 
 export default function CustomButton(props: CustomButtonProps) {
   return (
-    <Container {...props}>
+    <Container {...props} activeOpacity={1}>
       <ButtonGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
+        fullFill={props.fullFill}
         colors={['#ED283C', '#AB0F1F']}>
         {props.children ? (
           props.children
@@ -36,16 +38,18 @@ export default function CustomButton(props: CustomButtonProps) {
   );
 }
 
-const Container = styled.TouchableOpacity`
+const Container = styled.TouchableOpacity<{ fullFill?: boolean }>`
   flex-direction: row;
-  border-radius: 20px;
+  border-radius: 50px;
+  ${({ fullFill }) => fullFill && 'width: 100%'};
 `;
-const ButtonGradient = styled(LinearGradient)`
+const ButtonGradient = styled(LinearGradient)<{ fullFill?: boolean }>`
   height: 100%;
   border-radius: 20px;
   padding: 4px 20px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  align-items: center;
+  ${({ fullFill }) => fullFill && 'flex:1;'};
+  ${({ fullFill }) => fullFill && 'padding: 12px 0px;'};
 `;
